@@ -25,6 +25,12 @@ internal class ClassificationKtTest {
         main(args)
     }
 
+    fun mainTestWithImageSupplied() {
+        // Pass an image to the Vision API, expect a non-error response.
+        var args = arrayOf("resources/doggo.jpg");
+        main(args);
+    }
+
     @Test(expected = NoSuchFileException::class)
     fun mainNoImageTest() {
         /*

@@ -82,6 +82,14 @@ This sample can be run in IntelliJ. You will need to install the
 [Cloud Tools for IntelliJ][cloud-tools-intellij] plugin and open the gradle
 project.
 
+## Deploy to App Engine
+
+Install the
+
+```sh
+gcloud components install app-engine-java
+```
+
 ## The client library
 
 This sample uses the [Google Cloud Client Library for Java][google-cloud-java].
