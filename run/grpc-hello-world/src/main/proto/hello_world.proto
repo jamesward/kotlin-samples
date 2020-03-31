@@ -20,8 +20,8 @@ option java_multiple_files = true;
 
 // The greeting service definition.
 service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  // Continually sends a greeting
+  rpc SayHelloStream (HelloRequest) returns (stream HelloReply) {}
 }
 
 // The request message containing the user's name.

@@ -16,7 +16,6 @@
 
 package io.grpc.examples.helloworld
 
-import io.grpc.StatusException
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import io.grpc.examples.helloworld.GreeterGrpcKt.GreeterCoroutineStub
@@ -25,6 +24,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.asExecutor
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 
 class HelloWorldClient(val channel: ManagedChannel): Closeable {
@@ -32,11 +32,9 @@ class HelloWorldClient(val channel: ManagedChannel): Closeable {
 
   fun greet(name: String) = runBlocking {
     val request = HelloRequest.newBuilder().setName(name).build()
-    try {
-      val response = stub.sayHello(request)
-      println("Greeter client received: ${response.message}")
-    } catch (e: StatusException) {
-      println("RPC failed: ${e.status}")
+    val flow = stub.sayHelloStream(request)
+    flow.collect { response ->
+      println(response.message)
     }
   }
 
