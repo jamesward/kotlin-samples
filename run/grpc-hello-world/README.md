@@ -4,11 +4,11 @@ gRPC Kotlin Cloud Run Example
 Run Locally:
 1. In one shell / terminal window, start the server:
     ```
-    ./mvnw exec:java -Dexec.mainClass="io.grpc.examples.helloworld.HelloWorldServerKt"
+    ./mvnw compile exec:java -Dexec.mainClass="io.grpc.examples.helloworld.HelloWorldServerKt"
     ```
 1. In another shell / terminal window, run the client:
     ```
-    ./mvnw exec:java -Dexec.mainClass="io.grpc.examples.helloworld.HelloWorldClientKt"
+    ./mvnw compile exec:java -Dexec.mainClass="io.grpc.examples.helloworld.HelloWorldClientKt"
     ```
 
    You should see output like: `Greeter client received: Hello world`
